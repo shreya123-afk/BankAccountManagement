@@ -1,0 +1,23 @@
+﻿@model User
+
+@{
+    ViewBag.Title = "View Account Balance";
+}
+
+<h2>Account Balances for @Model.Name</h2>
+
+<table>
+    <tr>
+        <th>Account Type</th>
+        <th>Balance</th>
+    </tr>
+    @foreach (var account in Model.Accounts)
+    {
+        <tr>
+            <td>@account.AccountType</td>
+            <td>@account.Balance</td>
+        </tr>
+    }
+</table>
+
+<a href="@Url.Action("Index", "Home")">Back to Home</a>

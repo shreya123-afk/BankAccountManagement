@@ -1,0 +1,28 @@
+﻿@model WebApplication1.Models.AccountViewModel
+@{
+    ViewBag.Title = "Transfer Money";
+}
+
+<h2>Transfer Money</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <label for="fromAccountId">From Account:</label>
+        @Html.DropDownListFor(model => model.FromAccountId, new SelectList(ViewBag.UserAccounts, "Id", "AccountType"),
+        "select acount")
+    </div>
+    <div>
+        <label for="toAccountId">To Account:</label>
+        @Html.DropDownListFor(model => model.ToAccountId, new SelectList(ViewBag.UserAccounts, "Id", "AccountType"))
+    </div>
+    <div>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required />
+
+    </div>
+    <div>
+        <input type="submit" value="Transfer" />
+    </div>
+    @Html.ValidationSummary(true)
+}

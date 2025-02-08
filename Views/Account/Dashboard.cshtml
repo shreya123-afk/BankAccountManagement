@@ -1,0 +1,40 @@
+﻿@model WebApplication1.Models.User
+
+@{
+    ViewBag.Title = "Dashboard";
+    var message = TempData["Message"] as string;
+}
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="alert alert-danger">
+        @message
+    </div>
+}
+
+<h2>Welcome, @Model.Name</h2>
+<h3>Your Accounts</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Account Type</th>
+            <th>Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model.Accounts)
+        {
+            <tr>
+                <td>@account.AccountType</td>
+                <td>@account.Balance</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a href="@Url.Action("Transfer", "TransferMoney")">Transfer Money</a> |
+    <a href="@Url.Action("ApplyLoan", "Loan")">Apply for a Loan</a>|
+    <a href="@Url.Action("Logout", "Account")">Logout</a>
+</p>
